@@ -7,8 +7,10 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.children}
+      <div className="container-fluid">
+        <div className="row">
+          {this.props.children}
+        </div>
         {
           (() => {
             if (process.env.NODE_ENV !== 'production') {
