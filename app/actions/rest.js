@@ -1,6 +1,5 @@
 import $ from 'jquery';
 
-
 export const REQ_GET_CLIENTS = 'REQ_GET_CLIENTS';
 export const reqGetClients = () => {
   return {
@@ -12,17 +11,17 @@ export const RES_GET_CLIENTS_SUC = 'RES_GET_CLIENTS_SUC';
 export const resGetClientsSuc = (data) => {
   return {
     type: RES_GET_CLIENTS_SUC,
-    clients: data.clients.map(c => { c.isEditing = false; return c }),
+    clients: data.clients.map(c => { c.isEditing = false; return c; }),
     meta: data.meta
-  }
-}
+  };
+};
 
 export const RES_GET_CLIENTS_ERR = 'RES_GET_CLIENTS_ERR';
 export const resGetClientsErr = () => {
   return {
     type: RES_GET_CLIENTS_ERR
-  }
-}
+  };
+};
 
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
 export function fetchClients(page = 1) {
@@ -37,11 +36,10 @@ export function fetchClients(page = 1) {
         dispatch(resGetClientsSuc(data));
       })
       .fail(() => {
-        dispatch(resGetClientsErr())
+        dispatch(resGetClientsErr());
       });
   };
-};
-
+}
 
 export const REQ_POST_CLIENT = 'REQ_POST_CLIENT';
 export const reqPostClient = () => {
@@ -56,16 +54,16 @@ export const resPostClientSuc = (client) => {
   return {
     type: RES_POST_CLIENT_SUC,
     client
-  }
-}
+  };
+};
 
 export const RES_POST_CLIENT_ERR = 'RES_POST_CLIENT_ERR';
 export const resPostClientErr = (err) => {
   return {
     type: RES_POST_CLIENT_ERR,
     errorMessage: err
-  }
-}
+  };
+};
 
 export const ADD_CLIENT = 'ADD_CLIENT';
 export function addClient(name, sex, id_number, phone, address) {
@@ -181,14 +179,14 @@ export const resDeleteClientSuc = (id) => {
   return {
     type: RES_DELETE_CLIENT_SUC,
     id
-  }
+  };
 }
 
 export const RES_DELETE_CLIENT_ERR = 'RES_DELETE_CLIENT_ERR';
 export const resDeleteClientErr = () => {
   return {
     type: RES_DELETE_CLIENT_ERR
-  }
+  };
 }
 
 export const DELETE_CLIENT = 'DELETE_CLIENT';
@@ -203,14 +201,14 @@ export function deleteClient(id) {
         dispatch(resDeleteClientSuc(id));
       })
       .fail(() => {
-        dispatch(resDeleteClientErr())
+        dispatch(resDeleteClientErr());
       });
   };
-};
+}
 
 export const CLOSE_ERROR_MESSAGE = 'CLOSE_ERROR_MESSAGE';
 export const closeErrorMessage = () => {
   return {
     type: CLOSE_ERROR_MESSAGE
-  }
+  };
 }

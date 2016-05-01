@@ -20,7 +20,7 @@ class ClientList extends Component {
                   className="close">
             <span aria-hidden="true">&times;</span>
           </button>
-          Error! {clients.errorMessage.responseText}
+          Error! {clients.errorMessage}
         </div>
       );
     }

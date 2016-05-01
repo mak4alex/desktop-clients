@@ -83,10 +83,10 @@ class ClientForm extends Component {
 						<button type="submit" className="btn btn-primary">Add</button>
 						<button type="reset" onClick={this.onReset} className="btn btn-warning">Reset</button>
 				</form>
-				<div class="alert alert-warning">
+				<div className="alert alert-warning">
 					<ul>
-						{this.props.getValidationMessages().map( message =>
-							<li>{message}</li>
+						{this.props.getValidationMessages().map((message, i) =>
+							<li key={i}>{message}</li>
 						)}
 					</ul>
 				</div>
