@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 export default class Client extends Component {
 
   render() {
@@ -7,7 +8,7 @@ export default class Client extends Component {
       deleteClient, editClient, isEditing, cancelEdit, updateClient } = this.props;
 
     const onDelete = () => {
-      deleteClient(id);
+      deleteClient(id_number);
     }
 
     const onEdit = () => {
@@ -25,9 +26,8 @@ export default class Client extends Component {
     let addressInput = null;
 
     const onSaveClient = () => {
-      updateClient( 
-        id,
-        nameInput.value.trim(),   
+      updateClient(
+        nameInput.value.trim(),
         sexInput.checked,
         idNumberInput.value.trim(),
         phoneInput.value.trim(),
@@ -49,7 +49,7 @@ export default class Client extends Component {
           <td><input type="checkbox" ref={ n => sexInput = n }
                      defaultChecked={sex} /></td>
           <td><input type="text" ref={ n => idNumberInput = n }
-                     defaultValue={id_number} /></td>
+                     defaultValue={id_number} disabled /></td>
           <td><input type="text" ref={ n => phoneInput = n }
                      defaultValue={phone} /></td>
           <td><input type="text" ref={ n => addressInput = n }
@@ -76,7 +76,7 @@ export default class Client extends Component {
           <td>{phone}</td>
           <td>{address}</td>
           <td>{formatDate(created_at)}</td>
-          <td>{formatDate(updated_at)}</td>         
+          <td>{formatDate(updated_at)}</td>
           <td>
             <div className="btn-group btn-group-xs">
               <button className="btn btn-warning" onClick={onEdit}>Edit</button>

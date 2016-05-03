@@ -3,9 +3,10 @@ import {
   CANCEL_EDIT, REQ_DELETE_CLIENT, RES_DELETE_CLIENT_SUC,  RES_DELETE_CLIENT_ERR,
   REQ_POST_CLIENT, RES_POST_CLIENT_SUC, RES_POST_CLIENT_ERR,
   REQ_UPDATE_CLIENT, RES_UPDATE_CLIENT_SUC, RES_UPDATE_CLIENT_ERR,
-  CLOSE_ERROR_MESSAGE } from '../actions';
+  CLOSE_ERROR_MESSAGE, REST_SERVER_ONLINE, REST_SERVER_OFFLINE } from '../actions';
 
-let initialState = {
+
+const initialState = {
   entities: [],
   meta: {
     pagination: {
@@ -18,8 +19,10 @@ let initialState = {
   isFetching: false,
   isDeleting: false,
   isPosting: false,
-  isUpdating: false
+  isUpdating: false,
+  isServerOnline: false,
 };
+
 
 const clients = (state = initialState, action) => {
   switch (action.type) {
@@ -101,7 +104,7 @@ const clients = (state = initialState, action) => {
       });
     case RES_DELETE_CLIENT_SUC:
       return Object.assign({}, state, {
-        entities: state.entities.filter(i => i.id !== action.id),
+        entities: state.entities.filter(e => e.id_number !== action.id),
         isDeleting: false
       });
     case RES_DELETE_CLIENT_ERR:
@@ -113,6 +116,14 @@ const clients = (state = initialState, action) => {
       return Object.assign({}, state, {
         isError: false,
         errorMessage: {}
+      });
+    case REST_SERVER_ONLINE:
+      return Object.assign({}, state, {
+        isServerOnline: true,
+      });
+    case REST_SERVER_OFFLINE:
+      return Object.assign({}, state, {
+        isServerOnline: false,
       });
     default:
       return state;

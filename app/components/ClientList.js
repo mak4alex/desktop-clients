@@ -8,7 +8,7 @@ class ClientList extends Component {
     fetchClients();
   }
 
-  render () {
+  render() {
     const { clients, deleteClient, editClient, cancelEdit, 
             updateClient, closeErrorMessage } = this.props;
 
@@ -16,8 +16,7 @@ class ClientList extends Component {
     if (clients.isError) {
       errorMessage = (
         <div className="alert alert-danger">
-          <button onClick={e=>{e.preventDefault(); closeErrorMessage()}} 
-                  className="close">
+          <button onClick={e=>{e.preventDefault(); closeErrorMessage()}} className="close">
             <span aria-hidden="true">&times;</span>
           </button>
           Error! {clients.errorMessage}

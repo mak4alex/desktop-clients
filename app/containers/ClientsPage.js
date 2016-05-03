@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Clients from '../components/clients';
+import Clients from '../components';
 import * as Actions from '../actions';
 
 function mapStateToProps(state) {
